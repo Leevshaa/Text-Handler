@@ -7,12 +7,10 @@ import java.nio.file.Path;
 
 public class FileHandler {
 
-    String path = "files/";
-
-    public String createFile() {
+    public String createFile(String path) {
         Path newFile;
         try {
-            newFile = new Files(Path.of(path));
+            newFile = Files.createFile(Path.of(path));
         } catch (FileAlreadyExistsException e) {
             return "File already exists!";
         } catch (IOException e) {
@@ -21,7 +19,7 @@ public class FileHandler {
         return "Created " + newFile;
     }
 
-    public String writeToFile(Path  content) {
+    public String writeToFile(Path path, String content) {
         try {
             Files.writeString(path, content);
         } catch (IOException e) {
@@ -32,7 +30,7 @@ public class FileHandler {
 
     public String readFromFile(String path) {
         try {
-            return readString(Path(path));
+            return Files.readString(Path.of(path));
         } catch (IOException e) {
             return "Something wrong " + e.getMessage();
         }

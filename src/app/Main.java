@@ -1,7 +1,6 @@
 package app;
 
 import java.nio.file.Paths;
-import java.util.logging.FileHandler;
 
 public class Main {
 
